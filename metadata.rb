@@ -5,3 +5,8 @@ license          'All rights reserved'
 description      'Installs/Configures gocd'
 long_description 'Installs/Configures gocd'
 version          '0.1.0'
+
+depends 'java'
+depends 'yum'
+depends 'apt'
+depends 'yum-epel'

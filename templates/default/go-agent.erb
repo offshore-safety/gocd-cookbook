@@ -1,0 +1,7 @@
+export GO_SERVER=<%=      node[:gocd][:server][:host] %>
+export GO_SERVER_PORT=<%= node[:gocd][:server][:http_port] %>
+export JAVA_HOME=<%=      ENV['JAVA_HOME'] %>
+export AGENT_WORK_DIR=/var/lib/go-agent
+
+DAEMON=Y
+VNC=N

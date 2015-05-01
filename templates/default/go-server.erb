@@ -1,0 +1,14 @@
+export GO_SERVER_PORT=<%=       node[:gocd][:server][:http_port]  %>
+export GO_SERVER_SSL_PORT=<%=   node[:gocd][:server][:https_port] %>
+
+export JAVA_HOME=<%=            ENV['JAVA_HOME'] %>
+
+export SERVER_MEM=<%=           node[:gocd][:server][:min_mem] %>
+export SERVER_MAX_MEM=<%=       node[:gocd][:server][:max_mem] %>
+
+export SERVER_MIN_PERM_GEN=<%=  node[:gocd][:server][:min_perm_gen] %>
+export SERVER_MAX_PERM_GEN=<%=  node[:gocd][:server][:max_perm_gen] %>
+
+export SERVER_WORK_DIR=/var/lib/go-server
+
+DAEMON=Y
