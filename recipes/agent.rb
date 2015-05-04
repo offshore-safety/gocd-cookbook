@@ -32,6 +32,27 @@ template '/etc/default/go-agent' do
   group 'go'
 end
 
+directory '/var/lib/go-agent/config' do
+  owner 'go'
+  group 'go'
+  mode  '0750'
+  recursive true
+end
+
+template '/var/lib/go-agent/config/autoregister.properties' do
+  source 'autoregister.properties.erb'
+  mode '0600'
+  owner 'go'
+  group 'go'
+end
+
+http_request 'verify server up' do
+  url "http://#{node[:gocd][:server][:host]}:#{node[:gocd][:server][:http_port]}/go/home"
+  retry_delay 10
+  retries 10
+  action :nothing
+end
+
 service 'go-agent' do
   action [:enable, :start]
 end

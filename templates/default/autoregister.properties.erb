@@ -1,0 +1,3 @@
+agent.auto.register.key=<%=          node[:gocd][:autoregister][:key] %>
+agent.auto.register.resources=<%=    node[:gocd][:agent][:resources].join ',' %>
+agent.auto.register.environments=<%= node[:gocd][:agent][:environments].join ',' %>

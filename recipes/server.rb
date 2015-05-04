@@ -32,6 +32,13 @@ template '/etc/default/go-server' do
   group 'go'
 end
 
+template '/etc/go/cruise-config.xml' do
+  source 'cruise-config.xml.erb'
+  mode '0644'
+  owner 'go'
+  group 'go'
+end
+
 service 'go-server' do
   action [:enable, :start]
 end
