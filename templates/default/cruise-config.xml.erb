@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="75">
-  <server artifactsdir="artifacts" commandRepositoryLocation="default" agentAutoRegisterKey="<%= node[:gocd][:autoregister][:key] %>" />
+  <server artifactsdir="artifacts" 
+          commandRepositoryLocation="default"
+          agentAutoRegisterKey="<%= node[:gocd][:autoregister][:key] %>">
+    <security>
+      <% if node[:ldap] %>
+        <ldap 
+          uri="ldap://<%= node[:ldap][:host] %>" 
+          managerDn="<%= node[:ldap][:bind_dn] %>" 
+          managerPassword="<%= node[:ldap][:bind_pass] %>" 
+          searchFilter="(sAMAccountName={0})">
+          <bases>
+            <base value="<%= node[:ldap][:base] %>" />
+          </bases>
+        </ldap>
+      <% end %>
+    </security>
+  </server>
 </cruise>
