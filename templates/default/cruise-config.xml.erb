@@ -9,7 +9,7 @@
           uri="ldap://<%= node[:ldap][:host] %>" 
           managerDn="<%= node[:ldap][:bind_dn] %>" 
           managerPassword="<%= node[:ldap][:bind_pass] %>" 
-          searchFilter="(sAMAccountName={0})">
+          searchFilter="(<%= node[:ldap][:search_filter] %>={0})">
           <bases>
             <base value="<%= node[:ldap][:base] %>" />
           </bases>

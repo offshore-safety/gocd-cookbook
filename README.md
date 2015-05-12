@@ -21,7 +21,7 @@ The following are the attributes available for tweaking the configuration of a G
     <td><tt>['gocd']['autoregister']['key']</tt></td>
     <td>String</td>
     <td>Key to use for autoregistration of agents</td>
-    <td><tt>EzBiaW3q9EiBtmz2KWztQRWxiLXtyYa3mBAgYzBRKtZMrryeo7 (change this in your own installation)</tt></td>
+    <td><tt>ABCD1234 (change this in your own installation)</tt></td>
   </tr>
   <tr>
     <td><tt>['gocd']['server']['host']</tt></td>
@@ -76,6 +76,37 @@ The following are the attributes available for tweaking the configuration of a G
     <td>String Array</td>
     <td>The environments that this agent belongs to e.g. Production, UAT</td>
     <td><tt>[]</tt></td>
+  </tr>
+  <tr>
+  </tr>
+    <td><tt>['ldap']['host']</tt></td>
+    <td>String</td>
+    <td>Hostname of LDAP server to authenticate against</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  </tr>
+    <td><tt>['ldap']['bind_dn']</tt></td>
+    <td>String</td>
+    <td>DN of user used to bind to LDAP</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  </tr>
+    <td><tt>['ldap']['bind_pass']</tt></td>
+    <td>String</td>
+    <td>Plain-test password of user used to bind to LDAP. This will be encrypted when Go starts up</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  </tr>
+    <td><tt>['ldap']['search_filter']</tt></td>
+    <td>String</td>
+    <td>Search filter used to authenticate</td>
+    <td><tt>sAMAccountName</tt></td>
+  </tr>
+   </tr>
+    <td><tt>['ldap']['base']</tt></td>
+    <td>String</td>
+    <td>Base to search in</td>
+    <td><tt>nil</tt></td>
   </tr>
 </table>
 
