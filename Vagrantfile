@@ -74,8 +74,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           'jdk' => {
             '8' => {
               'x86_64' => {
-                'url' => 'https://s3.amazonaws.com/chefstuff.dev/jdk-8u45-linux-x64.gz',
-                'checksum' => '58486d7b16d7b21fbea7374adc109233'
+                'url' => 'https://s3.amazonaws.com/chefstuff.dev/jdk-8u45-linux-x64.tar.gz',
+                'checksum' => '1ad9a5be748fb75b31cd3bd3aa339cac'
               }
             }
           },
