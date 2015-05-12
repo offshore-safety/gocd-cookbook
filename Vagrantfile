@@ -51,7 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define :go_agent_with_ivdev do |agent|
+  config.vm.define :go_agent_oracle_jdk do |agent|
     agent.vm.hostname = 'gocd-agent-java'
     agent.vm.provider :virtualbox do |vb|
       vb.memory = 1024
@@ -65,7 +65,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             'host' => '172.28.128.10'
           },
           'agent' => {
-            'resources' => ['ivdev']
+            'resources' => ['oraclejdk']
+          }
+        },
+        'java' => {
+          'jdk_version' => '8',
+          'install_flavor' => 'oracle',
+          'jdk' => {
+            '8' => {
+              'x86_64' => {
+                'url' => 'https://s3.amazonaws.com/chefstuff.dev/jdk-8u45-linux-x64.gz',
+                'checksum' => '58486d7b16d7b21fbea7374adc109233'
+              }
+            }
+          },
+          'oracle' => {
+            'accept_oracle_download_terms' => true
           }
         }
       }
