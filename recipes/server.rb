@@ -9,6 +9,9 @@
 
 include_recipe 'java'
 
+package 'git'
+package 'svn'
+
 include_recipe 'gocd::setup_repository'
 
 ruby_block 'disable autostart' do
