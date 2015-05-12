@@ -89,8 +89,6 @@ This is responsible for installing a Go Server only. By default this will use th
 ### gocd:agent
 This is responsible for installing a Go Agent only. By default this will use the OpenJDK version 7. It may make sense to wrap this with your own recipes to provide extra functionality required by your build agents.
 
-Include `gocd` in your node's `run_list`:
-
 ## License and Authors
 
 Author:: Nathan Jones (thenathanjones@gmail.com)
