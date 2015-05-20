@@ -18,13 +18,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     server.vm.network :private_network, ip: '172.28.128.10'
 
     server.vm.provision :chef_solo do |chef|
-      chef.json = {}
+      chef.json = {
+        'java' => {
+          'jdk' => {
+            '8' => {
+              'x86_64' => {
+                'url' => 'https://s3-ap-southeast-2.amazonaws.com/chefstuff-sydney.dev/jdk-8u45-linux-x64.tar.gz',
+                'checksum' => 'f298ca9239051dfddf8642fcc9e264f7fe5af10adb67027feb3a0ed0a1a2316d'
+              }
+            }
+          }
+        }
+      }
 
       chef.run_list = [
         'recipe[gocd::server]'
       ]
     end
-
 
     server.vm.network "forwarded_port", guest: 8153, host: 8153
   end
@@ -38,9 +48,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     agent.vm.provision :chef_solo do |chef|
       chef.json = {
+        'java' => {
+          'jdk' => {
+            '8' => {
+              'x86_64' => {
+                'url' => 'https://s3-ap-southeast-2.amazonaws.com/chefstuff-sydney.dev/jdk-8u45-linux-x64.tar.gz',
+                'checksum' => 'f298ca9239051dfddf8642fcc9e264f7fe5af10adb67027feb3a0ed0a1a2316d'
+              }
+            }
+          }
+        },
         'gocd' => {
           'server' => {
             'host' => '172.28.128.10'
+          },
+          'agent' => {
+            'resources' => [
+              'oraclejdk8'
+            ]
           }
         }
       }
@@ -51,42 +76,43 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define :go_agent_oracle_jdk do |agent|
-    agent.vm.hostname = 'gocd-agent-java'
+  config.vm.define :go_agent_with_jdks_on_agent do |agent|
+    agent.vm.hostname = 'gocd-agent'
     agent.vm.provider :virtualbox do |vb|
       vb.memory = 1024
     end
-    agent.vm.network :private_network, ip: '172.28.128.13'
+    agent.vm.network :private_network, ip: '172.28.128.11'
 
     agent.vm.provision :chef_solo do |chef|
       chef.json = {
+        'java' => {
+          'jdk' => {
+            '8' => {
+              'x86_64' => {
+                'url' => 'https://s3-ap-southeast-2.amazonaws.com/chefstuff-sydney.dev/jdk-8u45-linux-x64.tar.gz',
+                'checksum' => 'f298ca9239051dfddf8642fcc9e264f7fe5af10adb67027feb3a0ed0a1a2316d'
+              }
+            }
+          }
+        },
         'gocd' => {
           'server' => {
             'host' => '172.28.128.10'
           },
           'agent' => {
-            'resources' => ['oraclejdk']
-          }
-        },
-        'java' => {
-          'jdk_version' => '8',
-          'install_flavor' => 'oracle',
-          'jdk' => {
-            '8' => {
-              'x86_64' => {
-                'url' => 'https://s3.amazonaws.com/chefstuff.dev/jdk-8u45-linux-x64.tar.gz',
-                'checksum' => '1ad9a5be748fb75b31cd3bd3aa339cac'
-              }
-            }
-          },
-          'oracle' => {
-            'accept_oracle_download_terms' => true
+            'resources' => [
+              'openjdk7',
+              'openjdk8',
+              'oraclejdk8'
+            ]
           }
         }
       }
 
       chef.run_list = [
-        'recipe[gocd::agent]'
+        'recipe[gocd::agent]',
+        'recipe[gocd::openjdk8]',
+        'recipe[gocd::openjdk7]'
       ]
     end
   end

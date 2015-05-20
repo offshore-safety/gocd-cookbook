@@ -1,7 +1,4 @@
-default[:java][:install_flavor] = 'openjdk'
-default[:java][:jdk_version] = '7'
-
-default[:ldap][:search_filter] = 'sAMAccountName'
+default[:gocd][:ldap][:search_filter] = 'sAMAccountName'
 
 default[:gocd][:version] = '15.1.0-1863'
 default[:gocd][:download_path] = 'http://download.go.cd/'

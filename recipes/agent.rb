@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'java'
+include_recipe 'gocd::jre'
 
 package 'git'
 package 'svn'
