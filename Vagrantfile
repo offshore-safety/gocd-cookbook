@@ -96,6 +96,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           }
         },
         'gocd' => {
+          'version' => '15.2.0-1936',
           'server' => {
             'host' => '172.28.128.10'
           },
@@ -110,9 +111,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       }
 
       chef.run_list = [
-        'recipe[gocd::agent]',
+        'recipe[gocd::openjdk7]',
         'recipe[gocd::openjdk8]',
-        'recipe[gocd::openjdk7]'
+        'recipe[gocd::agent]'
       ]
     end
   end
