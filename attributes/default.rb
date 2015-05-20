@@ -1,7 +1,6 @@
 default[:gocd][:ldap][:search_filter] = 'sAMAccountName'
 
-default[:gocd][:version] = '15.1.0-1863'
-default[:gocd][:download_path] = 'http://download.go.cd/'
+default[:gocd][:download_path] = 'http://download.go.cd/local'
 default[:gocd][:autoregister][:key] = 'ABCD1234'
 
 default[:gocd][:server][:host] = 'localhost'

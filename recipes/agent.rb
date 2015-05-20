@@ -12,15 +12,18 @@ include_recipe 'gocd::jre'
 package 'git'
 package 'svn'
 
-include_recipe 'gocd::setup_repository'
-
 ruby_block 'disable autostart' do
   block do
     ENV['DO_NOT_START_SERVICE'] = 'Y'
   end
 end
 
-package 'go-agent'
+if node[:gocd][:version]
+  include_recipe 'gocd::install_experimental_agent'
+else
+  include_recipe 'gocd::setup_repository'
+  package 'go-agent'
+end
 
 ruby_block 'enable autostart' do
   block do
