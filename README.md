@@ -79,31 +79,31 @@ The following are the attributes available for tweaking the configuration of a G
   </tr>
   <tr>
   </tr>
-    <td><tt>['ldap']['host']</tt></td>
+    <td><tt>['gocd']['ldap']['host']</tt></td>
     <td>String</td>
     <td>Hostname of LDAP server to authenticate against</td>
     <td><tt>nil</tt></td>
   </tr>
   </tr>
-    <td><tt>['ldap']['bind_dn']</tt></td>
+    <td><tt>['gocd']['ldap']['bind_dn']</tt></td>
     <td>String</td>
     <td>DN of user used to bind to LDAP</td>
     <td><tt>nil</tt></td>
   </tr>
   </tr>
-    <td><tt>['ldap']['bind_pass']</tt></td>
+    <td><tt>['gocd']['ldap']['bind_pass']</tt></td>
     <td>String</td>
     <td>Plain-test password of user used to bind to LDAP. This will be encrypted when Go starts up</td>
     <td><tt>nil</tt></td>
   </tr>
   </tr>
-    <td><tt>['ldap']['search_filter']</tt></td>
+    <td><tt>['gocd']['ldap']['search_filter']</tt></td>
     <td>String</td>
     <td>Search filter used to authenticate</td>
     <td><tt>sAMAccountName</tt></td>
   </tr>
    </tr>
-    <td><tt>['ldap']['base']</tt></td>
+    <td><tt>['gocd']['ldap']['base']</tt></td>
     <td>String</td>
     <td>Base to search in</td>
     <td><tt>nil</tt></td>

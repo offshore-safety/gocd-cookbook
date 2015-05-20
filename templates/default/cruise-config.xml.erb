@@ -4,14 +4,14 @@
           commandRepositoryLocation="default"
           agentAutoRegisterKey="<%= node[:gocd][:autoregister][:key] %>">
     <security>
-      <% if node[:ldap] %>
+      <% if node[:gocd][:ldap][:host] %>
         <ldap 
-          uri="ldap://<%= node[:ldap][:host] %>" 
-          managerDn="<%= node[:ldap][:bind_dn] %>" 
-          managerPassword="<%= node[:ldap][:bind_pass] %>" 
-          searchFilter="(<%= node[:ldap][:search_filter] %>={0})">
+          uri="<%= node[:gocd][:ldap][:protocol] %>://<%= node[:gocd][:ldap][:host] %>:<%= node[:gocd][:ldap][:port] %>" 
+          managerDn="<%= node[:gocd][:ldap][:bind_dn] %>" 
+          managerPassword="<%= node[:gocd][:ldap][:bind_pass] %>" 
+          searchFilter="(<%= node[:gocd][:ldap][:search_filter] %>={0})">
           <bases>
-            <base value="<%= node[:ldap][:base] %>" />
+            <base value="<%= node[:gocd][:ldap][:base] %>" />
           </bases>
         </ldap>
       <% end %>
