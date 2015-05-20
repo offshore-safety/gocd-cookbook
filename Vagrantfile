@@ -92,6 +92,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                 'url' => 'https://s3-ap-southeast-2.amazonaws.com/chefstuff-sydney.dev/jdk-8u45-linux-x64.tar.gz',
                 'checksum' => 'f298ca9239051dfddf8642fcc9e264f7fe5af10adb67027feb3a0ed0a1a2316d'
               }
+            },
+            '7' => {
+              'x86_64' => {
+                'url' => 'https://s3-ap-southeast-2.amazonaws.com/chefstuff-sydney.dev/jdk-7u80-linux-x64.tar.gz',
+                'checksum' => 'bad9a731639655118740bee119139c1ed019737ec802a630dd7ad7aab4309623'
+              }
             }
           }
         },
@@ -104,6 +110,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             'resources' => [
               'openjdk7',
               'openjdk8',
+              'oraclejdk7',
               'oraclejdk8'
             ]
           }
@@ -113,6 +120,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.run_list = [
         'recipe[gocd::openjdk7]',
         'recipe[gocd::openjdk8]',
+        'recipe[gocd:oracle_jdk7]',
         'recipe[gocd::agent]'
       ]
     end
