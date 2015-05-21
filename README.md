@@ -18,6 +18,12 @@ The following are the attributes available for tweaking the configuration of a G
     <th>Default</th>
   </tr>
   <tr>
+    <td><tt>['gocd']['version']</tt></td>
+    <td>String</td>
+    <td>Version of Go to install. If specified, it is assumed you're installing an experimental build, otherwise it will be installed from the YUM/APT repositories</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
     <td><tt>['gocd']['autoregister']['key']</tt></td>
     <td>String</td>
     <td>Key to use for autoregistration of agents</td>
@@ -115,10 +121,10 @@ This cookbook makes use of the [Java](https://supermarket.chef.io/cookbooks/java
 ## Usage
 
 ### gocd::server
-This is responsible for installing a Go Server only. By default this will use the OpenJDK version 7.
+This is responsible for installing a Go Server only. By default this will use Oracle JDK8.
 
 ### gocd:agent
-This is responsible for installing a Go Agent only. By default this will use the OpenJDK version 7. It may make sense to wrap this with your own recipes to provide extra functionality required by your build agents.
+This is responsible for installing a Go Agent only. By default this will use the OracleJDK8. It may make sense to wrap this with your own recipes to provide extra functionality required by your build agents.
 
 ## License and Authors
 
