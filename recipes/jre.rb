@@ -6,7 +6,7 @@ java_ark 'oracle-jdk8' do
   url node['java']['jdk']['8']['x86_64']['url']
   checksum node['java']['jdk']['8']['x86_64']['checksum']
   app_home java_home
-  bin_cmds ['java', 'javac']
+  bin_cmds ['java', 'javac', 'keytool']
   default true
   action :install
 end
