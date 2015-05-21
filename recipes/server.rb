@@ -19,7 +19,7 @@ ruby_block 'disable autostart' do
 end
 
 if node[:gocd][:version]
-  include_recipe 'gocd:install_experimental_server'
+  include_recipe 'gocd::install_experimental_server'
 else
   include_recipe 'gocd::setup_repository'
   package 'go-server'
