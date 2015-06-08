@@ -10,7 +10,7 @@
 include_recipe 'gocd::jre'
 
 package 'git'
-package 'svn'
+package 'subversion'
 
 ruby_block 'disable autostart' do
   block do
