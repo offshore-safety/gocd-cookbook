@@ -102,8 +102,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           }
         },
         'gocd' => {
-          # 'version' => '15.2.0-1936',
-          'version' => '16.5.0-3281',
+          'version' => '15.2.0-1936',
           'server' => {
             'host' => '172.28.128.10'
           },

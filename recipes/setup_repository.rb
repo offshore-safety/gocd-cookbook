@@ -8,7 +8,7 @@ if platform_family?('rhel')
   end
 elsif platform_family?('debian')
   apt_repository 'gocd' do
-    uri        'http://dl.bintray.com/gocd/gocd-deb'
+    uri        'https://download.go.cd/'
     components ['/']
     action     :add
     trusted    true
